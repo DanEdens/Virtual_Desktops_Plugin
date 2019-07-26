@@ -29,14 +29,43 @@ import eg
 eg.RegisterPlugin(
     name = "Virtual Desktops",
     author = "Kgschlosser",
-    version = "0.0.004",
-    guid = "{C2F03A33-21F5-47FA-B4BB-156362A2F239}",
+    version = "0.0.4",
+    guid = "{9FF3C497-1518-4036-8A70-969D86F73BE0}",
     canMultiLoad = False,
     url = "http://eventghost.net/forum/viewtopic.php?f=10&p=53389#p53389",
     description = "Creates events based on Virtual desktop interactions.",
-
-)
-
+    help=(
+        u'Will clean up in future revisions\n'
+        u'Requires Windows 10 - Build 1903\n'
+        u'Events include:\n'
+        u'VirtualDesktopCreated\n'
+        u'VirtualDesktopDestroyBegin\n'
+        u'VirtualDesktopDestroyFailed\n'
+        u'VirtualDesktopDestroyed\n'
+        u'ViewVirtualDesktopChanged\n'
+        u'CurrentVirtualDesktopChanged\n'
+        u'IsViewVisible = checks if a desktop is visible or not\n'
+        u'IsWindowOnCurrentVirtualDesktop = we will be able to use the Find '
+        u'Window action with this one and it will tell us if he window is on '
+        u'the current desktop or not.\n'
+        u'GetWindowDesktopId = use with Find Windows action to return the id '
+        u'of the desktop the window is on\n'
+        u'MoveWindowToDesktop = Use with Find Window to move a window to a '
+        u'specific desktop\n'
+        u'MoveViewToDesktop = I am not 100% sure on this I have to do more '
+        u'reading on it.\n'
+        u'CanViewMoveDesktops = I am not 100% sure on this I have to do more '
+        u'reading on it.\n'
+        u'GetCurrentDesktop = Gets the currently selected desktop\n'
+        u'GetDesktops = enumerates all desktops\n'
+        u'GetAdjacentDesktop = get the desktop either to the left or the right '
+        u'of the one that is currently selected\n'
+        u'SwitchDesktop = switch to a desktop\n'
+        u'CreateDesktopW = creates a new desktop\n'
+        u'RemoveDesktop = removes a desktop\n'
+        u'FindDesktop = finds a desktop'
+         )
+),
 
 from ctypes.wintypes import HRESULT, HWND, BOOL, POINTER, DWORD, INT, UINT, LPVOID, ULONG
 
@@ -45,20 +74,62 @@ import ctypes
 from comtypes import helpstring, COMMETHOD
 from comtypes.GUID import GUID
 
-REFGUID = POINTER(GUID)
-REFIID = REFGUID
-ENUM = INT
-IID = GUID
-INT32 = ctypes.c_int32
-INT64 = ctypes.c_int64
 
-CLSID_ImmersiveShell = GUID(
+class Text:
+    REFGUID = POINTER(GUID)
+    REFIID = REFGUID
+    ENUM = INT
+    IID = GUID
+    INT32 = ctypes.c_int32
+    INT64 = ctypes.c_int64
+    CLSID_ImmersiveShell = GUID(
     '{C2F03A33-21F5-47FA-B4BB-156362A2F239}'
-)
-
-CLSID_IVirtualNotificationService = GUID(
+    )
+    CLSID_IVirtualNotificationService = GUID(
     '{A501FDEC-4A09-464C-AE4E-1B9C21B84918}'
-)
+    )
+
+class VirtualDesktops(eg.PluginBase):
+    text = Text
+
+    # you want to add any variables that can be access from anywhere inside of
+    # your plugin here
+    def __init__(self):
+        pass
+
+    # you will want to add any startup parameters and also run any startup code
+    # here
+    def __start__(self, *args):
+        pass
+
+    # this gets called when eg is being closed and you can run code when that
+    # happens
+    def __close__(self):
+        pass
+
+    # this gets called as well when EG closes but it also gets called when a
+    # plugin gets disabled. This is where you will do things like close any
+    # open sockets
+    def __stop__(self):
+        pass
+
+    # You will replace the code in this method if you want to make a plugin
+    # configuration dialog.
+    def Configure(self, *args):
+        eg.PluginBase.Configure(self, *args)
+
+    # The next 2 are pretty self explanatory
+    def OnComputerResume(self):
+        pass
+
+    def OnComputerSuspend(self):
+        pass
+
+    # This gets called when a plugin gets deleted from the tree. so here if
+    # you use eg.PersistantData to store any data. that data needs to be
+    # deleted when the plugin gets removed. this is where that gets done.
+    def OnDelete(self):
+        pass
 
 
 class HSTRING__(ctypes.Structure):
