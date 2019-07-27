@@ -175,6 +175,7 @@ class MoveWindowToDesktop(eg.ActionBase):
     description = ""
 
     @eg.LogIt
+    def __call__(self):
         pass
 
 
