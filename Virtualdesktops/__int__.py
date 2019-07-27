@@ -143,6 +143,122 @@ class VirtualDesktops(eg.PluginBase):
         pass
 
 
+class IsViewVisible(eg.ActionBase):
+    name = "IsViewVisible"
+    description = ""
+
+    @eg.LogIt
+    def __call__(self):
+        pass
+
+
+class IsWindowOnCurrentVirtualDesktop(eg.ActionBase):
+    name = "IsWindowOnCurrentVirtualDesktop"
+    description = ""
+
+    @eg.LogIt
+    def __call__(self):
+        pass
+
+
+class GetWindowDesktopId(eg.ActionBase):
+    name = "GetWindowDesktopId"
+    description = ""
+
+    @eg.LogIt
+    def __call__(self):
+        pass
+
+
+class MoveWindowToDesktop(eg.ActionBase):
+    name = "MoveWindowToDesktop"
+    description = ""
+
+    @eg.LogIt
+        pass
+
+
+class MoveViewToDesktop(eg.ActionBase):
+    name = "MoveViewToDesktop"
+    description = ""
+
+    @eg.LogIt
+    def __call__(self):
+        pass
+
+
+class CanViewMoveDesktops(eg.ActionBase):
+    name = "CanViewMoveDesktops"
+    description = ""
+
+    @eg.LogIt
+    def __call__(self):
+        pass
+
+
+class GetCurrentDesktop(eg.ActionBase):
+    name = "GetCurrentDesktop"
+    description = ""
+
+    @eg.LogIt
+    def __call__(self):
+        pass
+
+
+class GetDesktops(eg.ActionBase):
+    name = "GetDesktops"
+    description = ""
+
+    @eg.LogIt
+    def __call__(self):
+        pass
+
+
+class GetAdjacentDesktop(eg.ActionBase):
+    name = "GetAdjacentDesktop"
+    description = ""
+
+    @eg.LogIt
+    def __call__(self):
+        pass
+
+
+class SwitchDesktop(eg.ActionBase):
+    name = "SwitchDesktop"
+    description = ""
+
+    @eg.LogIt
+    def __call__(self):
+        pass
+
+
+class CreateDesktop(eg.ActionBase):
+    name = "CreateDesktop"
+    description = ""
+
+    @eg.LogIt
+    def __call__(self):
+        pass
+
+
+class RemoveDesktop(eg.ActionBase):
+    name = "RemoveDesktop"
+    description = ""
+
+    @eg.LogIt
+    def __call__(self):
+        pass
+
+
+class FindDesktop(eg.ActionBase):
+    name = "FindDesktop"
+    description = ""
+
+    @eg.LogIt
+    def __call__(self):
+        pass
+
+
 class HSTRING__(ctypes.Structure):
     _fields_ = [
         ('unused', INT),
