@@ -30,6 +30,7 @@ eg.RegisterPlugin(
     name = "Virtual Desktops",
     author = "Kgschlosser",
     version = "0.0.4",
+    kind="program",
     guid = "{9FF3C497-1518-4036-8A70-969D86F73BE0}",
     canMultiLoad = False,
     url = "http://eventghost.net/forum/viewtopic.php?f=10&p=53389#p53389",
@@ -61,7 +62,7 @@ eg.RegisterPlugin(
         u'GetAdjacentDesktop = get the desktop either to the left or the right '
         u'of the one that is currently selected\n'
         u'SwitchDesktop = switch to a desktop\n'
-        u'CreateDesktopW = creates a new desktop\n'
+        u'CreateDesktop = creates a new desktop\n'
         u'RemoveDesktop = removes a desktop\n'
         u'FindDesktop = finds a desktop'
          )
@@ -92,10 +93,20 @@ class Text:
 class VirtualDesktops(eg.PluginBase):
     text = Text
 
-    # you want to add any variables that can be access from anywhere inside of
-    # your plugin here
     def __init__(self):
-        pass
+        self.AddAction(IsViewVisible)
+        self.AddAction(IsWindowOnCurrentVirtualDesktop)
+        self.AddAction(GetWindowDesktopId)
+        self.AddAction(MoveWindowToDesktop)
+        self.AddAction(MoveViewToDesktop)
+        self.AddAction(CanViewMoveDesktops)
+        self.AddAction(GetCurrentDesktop)
+        self.AddAction(GetDesktops)
+        self.AddAction(GetAdjacentDesktop)
+        self.AddAction(SwitchDesktop)
+        self.AddAction(CreateDesktop)
+        self.AddAction(RemoveDesktop)
+        self.AddAction(FindDesktop)
 
     # you will want to add any startup parameters and also run any startup code
     # here
